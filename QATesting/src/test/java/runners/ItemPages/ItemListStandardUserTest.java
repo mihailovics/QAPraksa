@@ -4,13 +4,14 @@ import Pages.ItemListPage;
 import Pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import javax.swing.*;
+
 public class ItemListStandardUserTest {
-    //login
-    //add to cart
     WebDriver driver = new ChromeDriver();
     LoginPage loginPage = new LoginPage(driver);
     final static String loginPageUrl="https://saucedemo.com";
@@ -23,9 +24,13 @@ public class ItemListStandardUserTest {
     }
     @BeforeMethod
     private void refreshPage(){
+
         driver.get(loginPageUrl);
     }
 
+
+    //login
+    //add to cart
     public void loginUser(){
         loginPage.loginToSauceDemo("standard_user","secret_sauce");
     }
@@ -36,6 +41,14 @@ public class ItemListStandardUserTest {
         itemListPage.checkItemAdded();
 
 
+    }
+    //login
+    //add to cart vise itema
+    @Test
+    public void addMultipleItems(){
+        loginUser();
+        itemListPage.addSecondItem();
+        itemListPage.checkMultipleItems();
     }
 }
 
