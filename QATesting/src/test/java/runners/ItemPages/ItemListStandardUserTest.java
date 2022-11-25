@@ -9,7 +9,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import javax.swing.*;
 
 public class ItemListStandardUserTest {
     WebDriver driver = new ChromeDriver();
@@ -27,8 +26,6 @@ public class ItemListStandardUserTest {
 
         driver.get(loginPageUrl);
     }
-
-
     //login
     //add to cart
     public void loginUser(){
@@ -40,7 +37,6 @@ public class ItemListStandardUserTest {
         itemListPage.addItemButton();
         itemListPage.checkItemAdded();
 
-
     }
     //login
     //add to cart vise itema
@@ -50,11 +46,16 @@ public class ItemListStandardUserTest {
         itemListPage.addSecondItem();
         itemListPage.checkMultipleItems();
     }
+    @Test
+    public void removeItem(){
+        loginUser();
+        itemListPage.removeItem();
+    }
 }
 
 
-//login
-//add to cart vise itema
+
+
 
 //login
 //add to cart
