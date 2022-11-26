@@ -35,4 +35,33 @@ public class LoginTests {
         loginPage.loginToSauceDemo("locked_out_user","secret_sauce");
         loginPage.checkLoginFailed();
     }
+    @Test
+    public void checkInvalidCredentials(){
+        loginPage.loginToSauceDemo("steva","secret");
+        loginPage.checkLoginFailed();
+    }
+    @Test
+    public void loginGlitchedUser(){
+        loginPage.loginToSauceDemo("performance_glitch_user","secret_sauce");
+        loginPage.checkUserIsLogged();
+    }
+    @Test
+    public void loginProblemUser(){
+        loginPage.loginToSauceDemo("problem_user","secret_sauce");
+        loginPage.checkUserIsLogged();
+    }
+    @Test
+    public void loginBlankUser(){
+        loginPage.loginToSauceDemo("","secret_sauce");
+        loginPage.checkLoginFailed();
+    }
+    @Test
+    public void loginBlankPassword(){
+        loginPage.loginToSauceDemo("standard_user","");
+        loginPage.checkLoginFailed();
+    }
+    @Test
+    public void copyPassTest(){
+        loginPage.copyPasswordTest();
+    }
 }

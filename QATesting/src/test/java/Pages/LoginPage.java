@@ -1,8 +1,12 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+
+import javax.swing.*;
 
 public class LoginPage {
     WebDriver driver;
@@ -33,5 +37,14 @@ public class LoginPage {
     }
     public void checkLoginFailed(){
         Assert.assertNotEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/inventory.html");
+    }
+    public void copyPasswordTest(){
+        WebElement el = driver.findElement(password);
+        WebElement al = driver.findElement(userName);
+        el.sendKeys("steva");
+        el.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        el.sendKeys(Keys.chord(Keys.CONTROL,"c"));
+        al.sendKeys(Keys.chord(Keys.CONTROL,"v"));
+        Assert.assertEquals(al.getText(),"");
     }
 }

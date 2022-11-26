@@ -11,23 +11,23 @@ import org.testng.annotations.Test;
 
 
 public class ItemListStandardUserTest {
-    WebDriver driver = new ChromeDriver();
-    LoginPage loginPage = new LoginPage(driver);
+    WebDriver driver;
+    LoginPage loginPage;
+    ItemListPage itemListPage;
     final static String loginPageUrl="https://saucedemo.com";
-    ItemListPage itemListPage = new ItemListPage(driver);
 
-    @BeforeClass
-    public void setupClass(){
-        String loginPage = loginPageUrl;
-        driver.get(loginPage);
-    }
+
     @BeforeMethod
-    private void refreshPage(){
-
+    public void refreshPage(){
+        driver = new ChromeDriver();
         driver.get(loginPageUrl);
+        loginPage = new LoginPage(driver);
+        itemListPage = new ItemListPage(driver);
     }
-    //login
-    //add to cart
+    @AfterMethod
+    public void afterMetod(){
+        driver.quit();
+    }
     public void loginUser(){
         loginPage.loginToSauceDemo("standard_user","secret_sauce");
     }
@@ -38,25 +38,26 @@ public class ItemListStandardUserTest {
         itemListPage.checkItemAdded();
 
     }
-    //login
-    //add to cart vise itema
     @Test
     public void addMultipleItems(){
         loginUser();
+        itemListPage.addItemButton();
         itemListPage.addSecondItem();
         itemListPage.checkMultipleItems();
     }
     @Test
     public void removeItem(){
         loginUser();
+        itemListPage.addItemButton();
+        itemListPage.addSecondItem();
         itemListPage.removeItem();
+    }
+    @Test
+    public void checkRemovedItem(){
+        loginUser();
+        itemListPage.addItemButton();
+        itemListPage.removeItem();
+        itemListPage.checkItemRemoved();
     }
 }
 
-
-
-
-
-//login
-//add to cart
-//remove

@@ -30,12 +30,8 @@ public class ItemListPage {
         Assert.assertEquals(cartBadge.getText(),"2");
     }
     public void checkItemRemoved(){
-        Assert.assertFalse(driver.findElement(By.className("shopping_cart_badge")).isDisplayed());
+        boolean badge = driver.findElements(By.className("shopping_cart_badge")).size() !=0;
+        Assert.assertEquals(false,badge);
+
     }
-
-
-
-
-
-
 }
