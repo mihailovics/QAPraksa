@@ -35,7 +35,7 @@ public class ItemListPage {
     }
     public void checkItemRemoved(){
         boolean badge = driver.findElements(By.className("shopping_cart_badge")).size() !=0;
-        Assert.assertEquals(false,badge);
+        Assert.assertFalse(badge);
 
     }
 }
