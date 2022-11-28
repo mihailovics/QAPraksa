@@ -59,5 +59,6 @@ public class ItemListStandardUserTest {
         itemListPage.removeItem();
         itemListPage.checkItemRemoved();
     }
+
 }
 

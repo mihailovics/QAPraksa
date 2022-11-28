@@ -64,4 +64,5 @@ public class LoginTests {
     public void copyPassTest(){
         loginPage.copyPasswordTest();
     }
+
 }

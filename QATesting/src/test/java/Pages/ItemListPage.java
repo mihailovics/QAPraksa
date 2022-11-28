@@ -11,6 +11,7 @@ public class ItemListPage {
     By addItem1Button = By.id("add-to-cart-sauce-labs-backpack");
     By addItem2Button = By.id("add-to-cart-sauce-labs-bike-light");
     By removeItemButton = By.id("remove-sauce-labs-backpack");
+    By shoppingCartBadge = By.className("shopping_cart_badge");
     public ItemListPage(WebDriver driver){this.driver = driver;}
     public void addItemButton(){
         driver.findElement(addItem1Button).click();
@@ -22,8 +23,11 @@ public class ItemListPage {
         driver.findElement(removeItemButton).click();
     }
     public void checkItemAdded(){
-        WebElement cartBadge = driver.findElement(By.className("shopping_cart_badge"));
-        Assert.assertEquals(cartBadge,driver.findElement(By.className("shopping_cart_badge")));
+        WebElement cartBadge = driver.findElement(shoppingCartBadge);
+        Assert.assertEquals(cartBadge,driver.findElement(shoppingCartBadge));
+    }
+    public void clickCartIcon(){
+        driver.findElement(shoppingCartBadge).click();
     }
     public void checkMultipleItems(){
         WebElement cartBadge = driver.findElement(By.className("shopping_cart_badge"));
