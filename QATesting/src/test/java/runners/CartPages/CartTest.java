@@ -11,7 +11,7 @@ import org.testng.annotations.*;
 
 public class CartTest {
     final static String loginPageUrl = "https://saucedemo.com";
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver;
     LoginPage loginPage;
     ItemListPage itemPage;
     CartPages cartPage;

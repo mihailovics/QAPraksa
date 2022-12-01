@@ -11,11 +11,11 @@ import org.testng.annotations.Test;
 
 
 public class ItemListStandardUserTest {
+    final static String loginPageUrl="https://saucedemo.com";
     WebDriver driver;
     LoginPage loginPage;
     ItemListPage itemListPage;
-    final static String loginPageUrl="https://saucedemo.com";
-
+    
     @BeforeMethod
     public void refreshPage(){
         driver = new ChromeDriver();

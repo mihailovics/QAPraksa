@@ -10,7 +10,6 @@ public class CartPages {
     By checkoutButton = By.id("checkout");
     By continueShopping = By.id("continue-shopping");
     By removeBackpackButton = By.id("remove-sauce-labs-backpack");
-    By itemPrice = By.className("inventory_item_price");
     By item = By.className("inventory_item_name");
     public CartPages(WebDriver driver){this.driver = driver;}
 

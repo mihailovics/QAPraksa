@@ -28,4 +28,9 @@
             <class name="runners.CartPages.CartTest"></class>
         </classes>
     </test>
+    <test name="checkoutTests">
+        <classes>
+            <class name="runners.CheckoutPages.CheckoutTests"></class>
+        </classes>
+    </test>
 </suite>

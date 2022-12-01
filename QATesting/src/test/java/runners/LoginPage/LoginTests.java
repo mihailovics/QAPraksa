@@ -12,13 +12,13 @@ public class LoginTests {
     WebDriver driver;
     LoginPage loginPage;
 
-
     @BeforeMethod
     private void refreshPage(){
         driver = new ChromeDriver();
         driver.get(loginPageUrl);
         loginPage = new LoginPage(driver);
     }
+
     @AfterMethod
     public void closeBrowser(){
         driver.quit();

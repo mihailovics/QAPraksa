@@ -37,4 +37,12 @@ public class CheckoutPage {
         soft.assertTrue(driver.findElement(orderCompletedMessage).isDisplayed());
         soft.assertAll();
     }
+    public void cancelOrderFromInput(){
+        driver.findElement(cancelButton).click();
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/cart.html");
+    }
+    public void cancelOrderAtOverview(){
+        driver.findElement(cancelButton).click();
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/inventory.html");
+    }
 }

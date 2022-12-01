@@ -10,19 +10,23 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
 
 public class e2eStandardUserTest {
-    ChromeOptions options = new ChromeOptions();
-    WebDriver driver = new ChromeDriver(options.setHeadless(true));
-    LoginPage loginPage = new LoginPage(driver);
-    ItemListPage itemListPage = new ItemListPage(driver);
-
-    CartPages cartPage = new CartPages(driver);
-    CheckoutPage checkoutPage = new CheckoutPage(driver);
+    final static String loginP = "https://www.saucedemo.com";
+    ChromeOptions options;
+    WebDriver driver;
+    LoginPage loginPage;
+    ItemListPage itemListPage;
+    CartPages cartPage;
+    CheckoutPage checkoutPage;
 
     @BeforeMethod
     public void refreshPage(){
-        String loginP = "https://www.saucedemo.com";
+        options = new ChromeOptions();
+        driver = new ChromeDriver(options.setHeadless(true));
         driver.get(loginP);
-
+        loginPage = new LoginPage(driver);
+        itemListPage = new ItemListPage(driver);
+        cartPage = new CartPages(driver);
+        checkoutPage = new CheckoutPage(driver);
     }
     @AfterMethod
     public void closeBrowser(){
