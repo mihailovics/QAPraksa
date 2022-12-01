@@ -6,12 +6,14 @@ import Pages.ItemListPage;
 import Pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class e2eGlitchedUserTest {
-    WebDriver driver = new ChromeDriver();
+    ChromeOptions options = new ChromeOptions();
+    WebDriver driver = new ChromeDriver(options.setHeadless(true));
     LoginPage loginPage = new LoginPage(driver);
     ItemListPage itemListPage = new ItemListPage(driver);
 
@@ -19,12 +21,12 @@ public class e2eGlitchedUserTest {
     CheckoutPage checkoutPage = new CheckoutPage(driver);
 
     @BeforeMethod
-    public void setupClass(){
+    public void refreshPage(){
         String loginP = "https://www.saucedemo.com";
         driver.get(loginP);
     }
     @AfterMethod
-    public void tearDown(){
+    public void closeBrowser(){
         driver.quit();
     }
     @Test
@@ -35,7 +37,7 @@ public class e2eGlitchedUserTest {
         itemListPage.checkItemAdded();
         itemListPage.clickCartIcon();
         cartPage.continueCheckout();
-        checkoutPage.inputuserData("Ime","Prezime","23000");
+        checkoutPage.inputUserData("Ime","Prezime","23000");
         checkoutPage.clickContinueButton();
         checkoutPage.clickFinishOrderButton();
         checkoutPage.checkOrderIsCompleted();

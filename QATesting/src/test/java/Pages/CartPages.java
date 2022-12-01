@@ -15,14 +15,19 @@ public class CartPages {
     public CartPages(WebDriver driver){this.driver = driver;}
 
     public void itemIsAdded(){
-        Assert.assertTrue(driver.findElement(By.className("inventory_item_name")).isDisplayed());
+        Assert.assertTrue(driver.findElement(item).isDisplayed());
     }
     public void removeBackpackItem(){
         driver.findElement(removeBackpackButton).click();
         boolean removed = driver.findElements(By.linkText("Remove")).size()!=0;
         Assert.assertFalse(removed);
     }
+    public void continueToShopping(){
+        driver.findElement(continueShopping).click();
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/inventory.html");
+    }
     public void continueCheckout(){
         driver.findElement(checkoutButton).click();
+
     }
 }

@@ -16,7 +16,6 @@ public class ItemListStandardUserTest {
     ItemListPage itemListPage;
     final static String loginPageUrl="https://saucedemo.com";
 
-
     @BeforeMethod
     public void refreshPage(){
         driver = new ChromeDriver();
@@ -25,36 +24,33 @@ public class ItemListStandardUserTest {
         itemListPage = new ItemListPage(driver);
     }
     @AfterMethod
-    public void afterMetod(){
+    public void closeBrowser(){
         driver.quit();
-    }
-    public void loginUser(){
-        loginPage.loginToSauceDemo("standard_user","secret_sauce");
     }
     @Test
     public void addItem(){
-        loginUser();
+        loginPage.loginToSauceDemo("standard_user","secret_sauce");
         itemListPage.addItemButton();
         itemListPage.checkItemAdded();
 
     }
     @Test
     public void addMultipleItems(){
-        loginUser();
+        loginPage.loginToSauceDemo("standard_user","secret_sauce");
         itemListPage.addItemButton();
         itemListPage.addSecondItem();
         itemListPage.checkMultipleItems();
     }
     @Test
     public void removeItem(){
-        loginUser();
+        loginPage.loginToSauceDemo("standard_user","secret_sauce");
         itemListPage.addItemButton();
         itemListPage.addSecondItem();
         itemListPage.removeItem();
     }
     @Test
     public void checkRemovedItem(){
-        loginUser();
+        loginPage.loginToSauceDemo("standard_user","secret_sauce");
         itemListPage.addItemButton();
         itemListPage.removeItem();
         itemListPage.checkItemRemoved();

@@ -12,6 +12,7 @@ public class ItemListPage {
     By addItem2Button = By.id("add-to-cart-sauce-labs-bike-light");
     By removeItemButton = By.id("remove-sauce-labs-backpack");
     By shoppingCartBadge = By.className("shopping_cart_badge");
+
     public ItemListPage(WebDriver driver){this.driver = driver;}
     public void addItemButton(){
         driver.findElement(addItem1Button).click();

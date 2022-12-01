@@ -2,6 +2,7 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 public class CheckoutPage {
@@ -15,10 +16,14 @@ public class CheckoutPage {
     By orderCompletedMessage = By.className("pony_express");
     public CheckoutPage(WebDriver driver){this.driver = driver;}
 
-    public void inputuserData(String strFirstName, String strLastName,String strZipCode){
+    public void inputUserData(String strFirstName, String strLastName,String strZipCode){
         driver.findElement(firstName).sendKeys(strFirstName);
         driver.findElement(lastName).sendKeys(strLastName);
         driver.findElement(zipCode).sendKeys(strZipCode);
+    }
+    public void continueFailed(){
+        driver.findElement(continueButton).click();
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/checkout-step-one.html");
     }
     public void clickContinueButton(){
         driver.findElement(continueButton).click();

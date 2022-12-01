@@ -1,4 +1,4 @@
-package runners;
+package runners.SortPages;
 
 import Pages.LoginPage;
 import Pages.SortPage;
@@ -12,19 +12,17 @@ import org.testng.annotations.BeforeMethod;
 
 public class SortTests {
     final static String loginPageUrl = "https://saucedemo.com";
-    WebDriver driver = new ChromeDriver();
-    LoginPage loginPage = new LoginPage(driver);
-    SortPage sortPage = new SortPage(driver);
-    @BeforeClass
-    public void setupClass(){
-        String loginPage = loginPageUrl;
-        driver.get(loginPage);
-    }
+    WebDriver driver;
+    LoginPage loginPage;
+    SortPage sortPage;
     @BeforeMethod
     private void refreshPage(){
+        driver = new ChromeDriver();
         driver.get(loginPageUrl);
+        loginPage = new LoginPage(driver);
+        sortPage = new SortPage(driver);
     }
-    @AfterClass
+    @AfterMethod
     public void closeBrowser(){
         driver.quit();
     }

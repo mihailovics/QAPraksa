@@ -6,25 +6,26 @@ import Pages.ItemListPage;
 import Pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class e2eProblemUserTest {
-    WebDriver driver = new ChromeDriver();
+    ChromeOptions options = new ChromeOptions();
+    WebDriver driver = new ChromeDriver(options.setHeadless(true));
     LoginPage loginPage = new LoginPage(driver);
     ItemListPage itemListPage = new ItemListPage(driver);
-
     CartPages cartPage = new CartPages(driver);
     CheckoutPage checkoutPage = new CheckoutPage(driver);
 
     @BeforeMethod
-    public void setupClass(){
-        String loginP = "https://www.saucedemo.com";
-        driver.get(loginP);
+    public void refreshPage(){
+        String loginURL = "https://www.saucedemo.com";
+        driver.get(loginURL);
     }
     @AfterMethod
-    public void tearDown(){
+    public void closeBrowser(){
         driver.quit();
     }
     @Test
@@ -35,9 +36,8 @@ public class e2eProblemUserTest {
         itemListPage.checkItemAdded();
         itemListPage.clickCartIcon();
         cartPage.continueCheckout();
-        checkoutPage.inputuserData("Ime","Prezime","23000");
-        checkoutPage.clickContinueButton();
-        checkoutPage.clickFinishOrderButton();
-        checkoutPage.checkOrderIsCompleted();
+        checkoutPage.inputUserData("Ime","Prezime","23000");
+        checkoutPage.continueFailed();
+
     }
 }

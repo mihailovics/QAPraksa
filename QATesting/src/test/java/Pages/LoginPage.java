@@ -10,7 +10,6 @@ import javax.swing.*;
 
 public class LoginPage {
     WebDriver driver;
-
     By userName = By.id("user-name");
     By password = By.id("password");
     By loginButton = By.id("login-button");

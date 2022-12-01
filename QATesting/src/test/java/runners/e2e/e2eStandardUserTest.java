@@ -5,27 +5,27 @@ import Pages.CheckoutPage;
 import Pages.ItemListPage;
 import Pages.LoginPage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.bidi.log.Log;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
-import org.testng.asserts.SoftAssert;
 
 public class e2eStandardUserTest {
-    WebDriver driver = new ChromeDriver();
+    ChromeOptions options = new ChromeOptions();
+    WebDriver driver = new ChromeDriver(options.setHeadless(true));
     LoginPage loginPage = new LoginPage(driver);
     ItemListPage itemListPage = new ItemListPage(driver);
 
     CartPages cartPage = new CartPages(driver);
-    CheckoutPage chekoutPage = new CheckoutPage(driver);
+    CheckoutPage checkoutPage = new CheckoutPage(driver);
 
     @BeforeMethod
-    public void setupClass(){
+    public void refreshPage(){
         String loginP = "https://www.saucedemo.com";
         driver.get(loginP);
+
     }
     @AfterMethod
-    public void tearDown(){
+    public void closeBrowser(){
         driver.quit();
     }
     @Test
@@ -36,9 +36,9 @@ public class e2eStandardUserTest {
         itemListPage.checkItemAdded();
         itemListPage.clickCartIcon();
         cartPage.continueCheckout();
-        chekoutPage.inputuserData("Ime","Prezime","23000");
-        chekoutPage.clickContinueButton();
-        chekoutPage.clickFinishOrderButton();
-        chekoutPage.checkOrderIsCompleted();
+        checkoutPage.inputUserData("Ime","Prezime","23000");
+        checkoutPage.clickContinueButton();
+        checkoutPage.clickFinishOrderButton();
+        checkoutPage.checkOrderIsCompleted();
         }
 }
